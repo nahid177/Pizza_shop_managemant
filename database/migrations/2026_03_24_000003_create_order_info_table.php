@@ -11,8 +11,7 @@ return new class extends Migration {
             $table->id('order_id');
             $table->foreignId('type_id')->constrained('types')->onDelete('cascade');
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
-            $table->unsignedBigInteger('menu_id');
-            $table->foreign('menu_id')->references('pizza_menu_number')->on('pizza_infos')->onDelete('cascade');
+            $table->foreignId('menu_id')->constrained('pizzas')->onDelete('cascade');
             $table->string('payment_type');
             $table->decimal('payment_amount', 10, 2);
             $table->timestamps();
