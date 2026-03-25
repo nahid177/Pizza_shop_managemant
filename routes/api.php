@@ -14,7 +14,11 @@ Route::post('/pizzaInfoPost', [PizzaController::class, 'store']);               
 
 //OrderInfoController
 
-Route::post('/order', [OrderInfoController::class, 'store']);                  // Add new
+// orders
+Route::post('/orders', [OrderInfoController::class, 'store']);
+Route::get('/orders', [OrderInfoController::class, 'index']);
+
+
 
 // customers
 Route::get('/customers', [CustomerController::class, 'index']);               // List all
