@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('deliveries', function (Blueprint $table) {
@@ -21,6 +20,13 @@ return new class extends Migration
             // FK → types table
             $table->foreignId('type_id')
                   ->constrained('types')
+                  ->onDelete('cascade');
+
+            // FK → deliverymaninfo table
+            $table->unsignedBigInteger('deliveryman_id'); 
+            $table->foreign('deliveryman_id')
+                  ->references('user_id')
+                  ->on('deliverymaninfo')
                   ->onDelete('cascade');
 
             $table->integer('box'); // number of boxes

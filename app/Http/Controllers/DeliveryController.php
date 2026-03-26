@@ -11,29 +11,30 @@ class DeliveryController extends Controller
     {
         $data = $request->validate([
             'order_id' => 'required|exists:order_info,order_id',
-            'type_id'  => 'required|exists:types,id',
-            'box'      => 'required|integer|min:1',
-            'amount'   => 'required|numeric|min:0',
-            'address'  => 'required|string|max:255',
-            'miles'    => 'required|numeric|min:0'
+            'type_id' => 'required|exists:types,id',
+            'deliveryman_id' => 'required|exists:deliverymaninfo,user_id',
+            'box' => 'required|integer|min:1',
+            'amount' => 'required|numeric|min:0',
+            'address' => 'required|string|max:255',
+            'miles' => 'required|numeric|min:0',
         ]);
 
         $delivery = Delivery::create($data);
 
         return response()->json([
             'success' => true,
-            'data' => $delivery->load('order','type')
+            'data' => $delivery->load('order','type','deliveryman')
         ], 201);
     }
 
     public function index()
     {
-        return Delivery::with('order','type')->get();
+        return Delivery::with('order','type','deliveryman')->get();
     }
 
     public function show($id)
     {
-        return Delivery::with('order','type')->findOrFail($id);
+        return Delivery::with('order','type','deliveryman')->findOrFail($id);
     }
 
     public function update(Request $request, $id)
@@ -42,18 +43,19 @@ class DeliveryController extends Controller
 
         $data = $request->validate([
             'order_id' => 'required|exists:order_info,order_id',
-            'type_id'  => 'required|exists:types,id',
-            'box'      => 'required|integer|min:1',
-            'amount'   => 'required|numeric|min:0',
-            'address'  => 'required|string|max:255',
-            'miles'    => 'required|numeric|min:0'
+            'type_id' => 'required|exists:types,id',
+            'deliveryman_id' => 'required|exists:deliverymaninfo,user_id',
+            'box' => 'required|integer|min:1',
+            'amount' => 'required|numeric|min:0',
+            'address' => 'required|string|max:255',
+            'miles' => 'required|numeric|min:0',
         ]);
 
         $delivery->update($data);
 
         return response()->json([
             'success' => true,
-            'data' => $delivery
+            'data' => $delivery->load('order','type','deliveryman')
         ]);
     }
 
