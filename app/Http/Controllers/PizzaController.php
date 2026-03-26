@@ -16,7 +16,7 @@ class PizzaController extends Controller
             'price' => 'required|array',
             'toppings' => 'required|array',
             'pizza_menu_number' => 'nullable|integer', // Add validation
-            // or 'nullable|exists:shops,id' if referencing shops table
+            // or 'nullable|exists:orders_info,id' if referencing shops table
         ]);
 
         // Save to database

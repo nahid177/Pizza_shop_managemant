@@ -26,8 +26,7 @@ class OrderInfo extends Model
         return $this->belongsTo(Type::class);
     }
 
-    // 🔥 menu_id points to pizzas.pizza_menu_number
-    public function pizza(){
-        return $this->belongsTo(Pizza::class, 'menu_id', 'pizza_menu_number');
+     public function pizza(){
+        return $this->belongsTo(Pizza::class, 'menu_id');
     }
 }

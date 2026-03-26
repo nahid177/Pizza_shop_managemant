@@ -20,9 +20,8 @@ class Pizza extends Model
         'toppings' => 'array',
     ];
 
-    // Optional relation to Shop table
-    public function shop()
+    public function orders()
     {
-        return $this->belongsTo(Shop::class, 'pizza_menu_number');
+        return $this->hasMany(OrderInfo::class, 'menu_id');
     }
 }

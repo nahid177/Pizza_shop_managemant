@@ -11,7 +11,7 @@ class OrderInfoController extends Controller
             $data = $request->validate([
                 'type_id'=>'required|exists:types,id',
                 'customer_id'=>'required|exists:customers,id',
-                'menu_id'=>'required|exists:pizzas,pizza_menu_number', 
+                'menu_id'=>'required|exists:pizzas,id',
                 'payment_type'=>'required|string',
                 'payment_amount'=>'required|numeric'
             ]);
