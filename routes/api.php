@@ -8,7 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TakeoutController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\DeliveryManInfoController;
-
+use App\Http\Controllers\UserController;
 
 
 //pizzaInfoPost
@@ -66,3 +66,10 @@ Route::get('/deliverymen/{id}', [DeliveryManInfoController::class, 'show']);
 Route::post('/deliverymen', [DeliveryManInfoController::class, 'store']);
 Route::put('/deliverymen/{id}', [DeliveryManInfoController::class, 'update']);
 Route::delete('/deliverymen/{id}', [DeliveryManInfoController::class, 'destroy']);
+
+//user
+
+Route::post('/user/register', [UserController::class, 'register']);
+Route::post('/user/login', [UserController::class, 'login']);
+Route::post('/user/forgot-password', [UserController::class, 'forgotPassword']);
+Route::post('/user/reset-password', [UserController::class, 'resetPassword']);
