@@ -6,7 +6,7 @@ use App\Http\Controllers\OrderInfoController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TakeoutController;
-
+use App\Http\Controllers\DeliveryController;
 //pizzaInfoPost
 
 Route::post('/pizzaInfoPost', [PizzaController::class, 'store']);               // Add new
@@ -43,3 +43,12 @@ Route::get('/takeouts/{id}', [TakeoutController::class, 'show']);
 Route::post('/takeouts', [TakeoutController::class, 'store']);
 Route::put('/takeouts/{id}', [TakeoutController::class, 'update']);
 Route::delete('/takeouts/{id}', [TakeoutController::class, 'destroy']);
+
+
+//Deliveries
+
+Route::get('/deliveries', [DeliveryController::class, 'index']);       
+Route::get('/deliveries/{id}', [DeliveryController::class, 'show']);   
+Route::post('/deliveries', [DeliveryController::class, 'store']);      
+Route::put('/deliveries/{id}', [DeliveryController::class, 'update']); 
+Route::delete('/deliveries/{id}', [DeliveryController::class, 'destroy']);
