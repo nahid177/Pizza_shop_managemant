@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderInfoController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\CustomerController;
-
+use App\Http\Controllers\TakeoutController;
 
 //pizzaInfoPost
 
@@ -35,3 +35,11 @@ Route::post('/types', [TypeController::class, 'store']);                // Creat
 Route::get('/types/{id}', [TypeController::class, 'show']);            // Show single
 Route::put('/types/{id}', [TypeController::class, 'update']);         // Update
 Route::delete('/types/{id}', [TypeController::class, 'destroy']);    // Delete
+
+//takeouts
+
+Route::get('/takeouts', [TakeoutController::class, 'index']);
+Route::get('/takeouts/{id}', [TakeoutController::class, 'show']);
+Route::post('/takeouts', [TakeoutController::class, 'store']);
+Route::put('/takeouts/{id}', [TakeoutController::class, 'update']);
+Route::delete('/takeouts/{id}', [TakeoutController::class, 'destroy']);
