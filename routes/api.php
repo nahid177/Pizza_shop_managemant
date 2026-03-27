@@ -9,7 +9,7 @@ use App\Http\Controllers\TakeoutController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\DeliveryManInfoController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\PaymentController;
 
 //pizzaInfoPost
 
@@ -73,3 +73,13 @@ Route::post('/user/register', [UserController::class, 'register']);
 Route::post('/user/login', [UserController::class, 'login']);
 Route::post('/user/forgot-password', [UserController::class, 'forgotPassword']);
 Route::post('/user/reset-password', [UserController::class, 'resetPassword']);
+
+
+//payments
+
+
+Route::get('payments', [PaymentController::class, 'index']);
+Route::get('payments/{id}', [PaymentController::class, 'show']);
+Route::post('payments', [PaymentController::class, 'store']);
+Route::put('payments/{id}', [PaymentController::class, 'update']);
+Route::delete('payments/{id}', [PaymentController::class, 'destroy']);
