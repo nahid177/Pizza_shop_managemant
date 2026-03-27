@@ -9,16 +9,18 @@ class CustomerController extends Controller
 {
     public function index() { return Customer::all(); }
 
-    public function store(Request $request){
-        $data = $request->validate([
-            'name'=>'required|string',
-            'address'=>'nullable|string',
-            'phone'=>'nullable|string'
-        ]);
-        $customer = Customer::create($data);
-        return response()->json(['success'=>true,'message'=>'Customer created','data'=>$customer],201);
-    }
+public function store(Request $request){
+    $data = $request->validate([
+        'user_id' => 'required|exists:users,id',  // <-- make sure user exists
+        'name'=>'required|string',
+        'address'=>'nullable|string',
+        'phone'=>'nullable|string'
+    ]);
 
+    $customer = Customer::create($data);
+
+    return response()->json(['success'=>true,'message'=>'Customer created','data'=>$customer],201);
+}
     public function show($id){ return Customer::findOrFail($id); }
 
     public function update(Request $request, $id){
