@@ -67,7 +67,7 @@ class UserController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Reset code generated',
-            'reset_code' => $user->reset_code // ⚠️ production এ এটা return করবে না
+            'reset_code' => $user->reset_code 
         ]);
     }
 

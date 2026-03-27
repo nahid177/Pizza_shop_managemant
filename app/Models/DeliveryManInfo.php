@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DeliverymanInfo extends Model
+class DeliveryManInfo extends Model
 {
-    protected $table = 'deliverymaninfo'; 
+    protected $table = 'deliverymaninfo';
+
     protected $fillable = [
         'user_id',
         'name',
